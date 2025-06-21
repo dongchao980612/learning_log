@@ -1,0 +1,32 @@
+{% extends 'learning_log_app/base.html' %}
+
+{% block title %}Topics - Learning Log{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h1>主题</h1>
+
+        <!-- 主题列表 -->
+        <ul class="list-group">
+            {% for topic in topics %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="{% url 'learning_log_app:topic' topic.id %}" class="text-decoration-none">
+                        {{ topic.text }}
+                    </a>
+                    <small class="text-muted">Added on {{ topic.date_added|date:"M d, Y" }}</small>
+                </li>
+            {% empty %}
+                <li class="list-group-item">
+                    <p>暂无主题</p>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <!-- 添加新主题的按钮 -->
+        {% if user.is_authenticated %}
+                    <a href="{% url 'learning_log_app:new_topic' %}" class="btn btn-primary mt-3">添加主题</a>
+        {% else %}
+            <p>你需要<a href="{% url 'learning_log_app:login' %}">登录</a>后添加主题</p>
+        {% endif %}
+    </div>
+{% endblock %}

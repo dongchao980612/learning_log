@@ -1,13 +1,18 @@
 ## Django入门
-
+## 环境搭建
+```shell script
+uv  init
+uv venv
+```
+##
 ### 安装 Django
 ```shell script
-pip3 install Django
+uv add  Django
 ```
 
 ### 在 Django 中创建项目
 ```shell script
-django-admin startproject learning_log .
+django-admin startproject learning_log
 ```
 ### 创建数据库
 

@@ -1,0 +1,26 @@
+{% extends 'learning_log_app/base.html' %}
+
+{% block title %}Login - Learning Log{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h1>登录</h1>
+    <form method="post" action="{% url 'learning_log_app:login' %}">
+        {% csrf_token %}
+          <!-- 用户名输入框 -->
+        <div class="form-group">
+            <label for="id_username">用户名：</label>
+            <input type="text" id="id_username" name="username" class="form-control" required>
+        </div>
+
+        <!-- 密码输入框 -->
+        <div class="form-group">
+            <label for="id_password">密码：</label>
+            <input type="password" id="id_password" name="password" class="form-control" required>
+        </div>
+          <!-- 登录按钮 -->
+        <button type="submit" class="btn btn-primary">登录</button>
+    </form>
+    <p>没有账号? <a href="{% url 'learning_log_app:register' %}">注册</a></p>
+</div>
+{% endblock %}
